@@ -4,6 +4,10 @@ h1 { margin: 0; font-size: 22px; }
 .sub { margin: 2px 0 0; color: #666; }
 .status { max-width: 960px; margin: 8px 0 12px; color: #555; }
 .error { color: #a40016; }
+.new-bar-slot { display: flex; align-items: center; min-height: 44px; max-width: 1120px; }
+.new-bar-slot button { padding: 7px 14px; border: 1px solid #4968a5; border-radius: 4px; background: #edf3ff; color: #183b7a; font: inherit; font-weight: 600; cursor: pointer; }
+.new-bar-slot button:hover { background: #dce8ff; }
+.new-bar-slot button:focus-visible { outline: 3px solid #6a8ee0; outline-offset: 2px; }
 .list { list-style: none; margin: 0; padding: 0; max-width: 1120px; }
 .row { display: grid; grid-template-columns: 90px 50px minmax(160px, 1fr) 190px 120px; gap: 12px; align-items: center; min-height: 52px; padding: 4px 12px; border-bottom: 1px solid #e5e5e5; background: #fff; }
 .row .id, footer code { font-family: ui-monospace, monospace; }

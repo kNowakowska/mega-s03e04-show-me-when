@@ -13,18 +13,27 @@ what just broke and takes it.
 
 ## Requirements
 
-- **R1** New incidents appear live at the top of the list, newest first.
-- **R2** Each incident row has an **Ack** button. Ack sends the ack (`api.ack(id)`) and marks the row acked.
+- **R1** Poll for new incidents and hold them outside the visible list. A `N new` bar brings them to the top, newest first, only when clicked.
+- **R2** Each incident row has an **Ack** button. Ack sends `api.ack(id)` and marks that same incident row acked. A live refresh must not change which row an Ack button targets.
 - **R3** Show a loader until incidents load.
 - **R4** The board refreshes itself every 2 seconds while open.
 - **R5** Times show in the viewer's local time; day before month for EU locales (dd/mm).
 - **R6** The page names its build: `<meta name="build" content="<git sha>">` in the head and the same sha in the footer.
+
+## Product decision after step one
+
+> “The list holds still while it is on screen; a "N new" bar brings new incidents in on click. Ack stays on the row.”
+
+- Keep the visible rows in their current order while polling continues.
+- Store newly arrived incidents separately and show a `N new` bar. Clicking it prepends those incidents in newest-first order.
+- Preserve each row's incident id through refreshes and acknowledgements. Do not rebuild the visible list during a poll.
 
 ## Hooks (pinned — tests and the replay rely on them)
 
 | `data-testid` | element |
 |---------------|---------|
 | `board` | the board's main area |
+| `new-bar` | the `N new` button shown for incidents waiting to be brought into the list |
 | `loader` | the loader (gone once incidents load) |
 | `empty` | what shows when there are no incidents |
 | `incident-list` | the list |
