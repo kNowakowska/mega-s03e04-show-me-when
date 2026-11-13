@@ -1,0 +1,22 @@
+body { margin: 0; font: 15px/1.4 system-ui, sans-serif; color: #1d1d1f; background: #fafafa; }
+header, main, footer { padding: 12px 24px; }
+h1 { margin: 0; font-size: 22px; }
+.sub { margin: 2px 0 0; color: #666; }
+.status { max-width: 960px; margin: 8px 0 12px; color: #555; }
+.error { color: #a40016; }
+.list { list-style: none; margin: 0; padding: 0; max-width: 1120px; }
+.row { display: grid; grid-template-columns: 90px 50px minmax(160px, 1fr) 190px 120px; gap: 12px; align-items: center; min-height: 52px; padding: 4px 12px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+.row .id, footer code { font-family: ui-monospace, monospace; }
+.row.sev1 .sev { color: #b00020; font-weight: 600; }
+.row.sev2 .sev { color: #a15c00; }
+.row time { color: #555; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.row button { justify-self: start; padding: 6px 12px; border: 1px solid #777; border-radius: 4px; background: white; color: #1d1d1f; cursor: pointer; }
+.row button:disabled { opacity: .6; cursor: wait; }
+[data-testid="acked"] { color: #176b36; font-weight: 600; }
+footer { color: #777; font-size: 13px; }
+@media (max-width: 760px) {
+  header, main, footer { padding: 12px 16px; }
+  .row { grid-template-columns: 1fr auto; gap: 4px 10px; padding: 10px; }
+  .row .id, .row .sev, .row .what, .row time { grid-column: 1; }
+  .row button, .row [data-testid="acked"] { grid-column: 2; grid-row: 1 / span 4; justify-self: end; }
+}
